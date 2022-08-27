@@ -3,6 +3,7 @@ import QuestionAndAnswer from './QuestionAndAnswer'
 import { nanoid } from 'nanoid'
 
 export default function Questions(props) {
+  const [triviaCategories, setTriviaCategories] = React.useState([])
   const [questionsAndAnswers, setQuestionsAndAnswers] = React.useState([])
   const [checkAnswers, setCheckAnswers] = React.useState(false)
   const [correctAnswers, setCorrectAnswers] = React.useState(0)
@@ -10,8 +11,19 @@ export default function Questions(props) {
   const [selectedAnswer, setSelectedAnswer] = React.useState('')
 
   React.useEffect(() => {
+    // https://opentdb.com/api_category.php
+    fetch('https://opentdb.com/api_category.php').then((resp) =>
+      resp.json().then((data) => {
+        setTriviaCategories(
+          data.trivia_categories.map((trivia) => generateTrivia(trivia))
+        )
+      })
+    )
+  }, [])
+
+  React.useEffect(() => {
     if (!checkAnswers) {
-      fetch('https://opentdb.com/api.php?amount=5').then((resp) =>
+      fetch('https://opentdb.com/api.php?amount=5&category=9').then((resp) =>
         resp.json().then((data) => {
           setQuestionsAndAnswers(
             data.results.map((qAndA) => generateQAndA(qAndA))
@@ -58,6 +70,16 @@ export default function Questions(props) {
       setCorrectAnswers(numCorrectAnswers)
     }
   }, [checkAnswers])
+
+  function generateTrivia(trivia) {
+    console.log(`id=${trivia.id}  name=${trivia.name}`)
+    const key = nanoid()
+    return {
+      key: key,
+      id: trivia.id,
+      name: trivia.name,
+    }
+  }
 
   function generateQAndA(qAndA) {
     const id = nanoid()
@@ -138,6 +160,7 @@ export default function Questions(props) {
 
   function playAgain() {
     setCheckAnswers(false)
+    setCorrectAnswers(0)
     setReplay(true)
   }
 

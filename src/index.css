@@ -9,8 +9,8 @@ body {
 
 main {
   position: relative;
-  width: 550px;
-  height: 650px;
+  width: 600px;
+  height: 700px;
   left: 20px;
   top: 30px;
   background: #f5f7fb;
@@ -21,10 +21,11 @@ main {
   flex-direction: column; */
 }
 
+/* intro page */
 .intro {
   position: absolute;
-  top: 200px;
-  left: 150px;
+  top: 33%;
+  left: 30%;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -32,10 +33,9 @@ main {
   justify-content: space-between;
   /* border: 2px solid peru; */
 }
-
 .title {
   margin: 0;
-  font-family: "Karla";
+  font-family: 'Karla';
   font-style: normal;
   font-weight: 700;
   font-size: 31.25px;
@@ -44,10 +44,9 @@ main {
   color: #293264;
   /* border: 2px solid purple; */
 }
-
 .descr {
   margin-top: 7px;
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -60,7 +59,7 @@ main {
   margin-top: 30px;
   width: 193px;
   height: 52px;
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 19px;
@@ -72,6 +71,7 @@ main {
   /* border: 2px solid turquoise; */
 }
 
+/* blobs */
 .blobs-right-intro {
   position: absolute;
   width: 130px;
@@ -94,11 +94,10 @@ main {
   right: 0%;
   top: 0%;
   bottom: 0%;
-  background-image: url("/src/images/top-right.png");
+  background-image: url('/src/images/top-right.png');
   border-top-right-radius: 10px;
   /* border: 2px solid green; */
 }
-
 .blobs-left-intro {
   position: absolute;
   width: 148px;
@@ -121,18 +120,19 @@ main {
   right: 0%;
   top: 0%;
   bottom: 0%;
-  background-image: url("/src/images/bot-left.png");
+  background-image: url('/src/images/bot-left.png');
   border-top-right-radius: 40px;
   border-bottom-left-radius: 10px;
   /* border: 2px solid orange; */
 }
 
+/* the quiz */
 .quiz {
   position: absolute;
-  left: 75px;
-  top: 20px;
-  width: 400px;
-  height: 600px;
+  left: 12.5%;
+  top: 3.5%;
+  width: 450px;
+  height: 650px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -141,62 +141,60 @@ main {
 }
 .question {
   margin-top: 20px;
-  font-family: "Karla";
+  font-family: 'Karla';
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 18px;
+  /* line-height: 19px; */
   color: #293264;
 }
 .answers {
   margin-top: 5px;
   width: 400px;
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   text-align: center;
   color: #293264;
   display: flex;
   justify-content: space-evenly;
 }
-
 .answer {
   width: auto;
   height: auto;
   font-weight: 500;
-  font-size: 10.24px;
-  line-height: 12px;
+  font-size: 14px;
+  /* line-height: 12px; */
   /* background: #d6dbf5; */
   background: #f5f7fb;
   color: #293264;
   border-radius: 7.71045px;
   cursor: pointer;
 }
-
 .line {
   margin-top: 8px;
-  width: 399px;
+  width: 450px;
   height: 0px;
   left: 75px;
   top: 470px;
   border: 0.794239px solid #dbdef0;
 }
 
+/* quiz buttons */
 .quiz-btn {
   /* margin-top: 30px; */
-  width: 120px;
+  width: 130px;
   height: 35px;
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
-  font-size: 10.24px;
-  line-height: 12px;
+  font-size: 14px;
+  /* line-height: 12px; */
   text-align: center;
   color: #f5f7fb;
   background: #4d5b9e;
   border-radius: 10px;
   cursor: pointer;
 }
-
 .play-again {
   width: 350px;
   display: flex;
@@ -204,7 +202,7 @@ main {
   justify-content: space-around;
 }
 .answer-score {
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
   font-size: 12.8px;
