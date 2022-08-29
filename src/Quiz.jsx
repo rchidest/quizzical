@@ -1,9 +1,11 @@
 import React from 'react'
 import QuestionAndAnswer from './QuestionAndAnswer'
+import CategoryMenu from './CategoryMenu'
 import { nanoid } from 'nanoid'
 
 export default function Questions(props) {
   const [triviaCategories, setTriviaCategories] = React.useState([])
+  const [triviaCategory, setTriviaCategory] = React.useState('9')
   const [questionsAndAnswers, setQuestionsAndAnswers] = React.useState([])
   const [checkAnswers, setCheckAnswers] = React.useState(false)
   const [correctAnswers, setCorrectAnswers] = React.useState(0)
@@ -11,8 +13,8 @@ export default function Questions(props) {
   const [selectedAnswer, setSelectedAnswer] = React.useState('')
 
   React.useEffect(() => {
-    // https://opentdb.com/api_category.php
-    fetch('https://opentdb.com/api_category.php').then((resp) =>
+    const url = `https://opentdb.com/api_category.php`
+    fetch(url).then((resp) =>
       resp.json().then((data) => {
         setTriviaCategories(
           data.trivia_categories.map((trivia) => generateTrivia(trivia))
@@ -23,7 +25,8 @@ export default function Questions(props) {
 
   React.useEffect(() => {
     if (!checkAnswers) {
-      fetch('https://opentdb.com/api.php?amount=5&category=9').then((resp) =>
+      const url = `https://opentdb.com/api.php?amount=5&category=${triviaCategory}&difficulty=medium`
+      fetch(url).then((resp) =>
         resp.json().then((data) => {
           setQuestionsAndAnswers(
             data.results.map((qAndA) => generateQAndA(qAndA))
@@ -31,7 +34,7 @@ export default function Questions(props) {
         })
       )
     }
-  }, [replay, checkAnswers])
+  }, [replay, checkAnswers, triviaCategory])
 
   React.useEffect(() => {
     if (selectedAnswer) {
@@ -40,9 +43,6 @@ export default function Questions(props) {
           let newAnswer = {}
           const { id, qId, isSelected } = answer
           if (selectedAnswer === id) {
-            console.log(
-              `qId=${qId}  isSelected=${isSelected}  qAndA.id=${qAndA.id}`
-            )
             newAnswer = { ...answer, isSelected: !isSelected }
           } else {
             newAnswer = { ...answer }
@@ -72,7 +72,7 @@ export default function Questions(props) {
   }, [checkAnswers])
 
   function generateTrivia(trivia) {
-    console.log(`id=${trivia.id}  name=${trivia.name}`)
+    // console.log(`id=${trivia.id}  name=${trivia.name}`)
     const key = nanoid()
     return {
       key: key,
@@ -164,8 +164,17 @@ export default function Questions(props) {
     setReplay(true)
   }
 
+  function selectCategory(id) {
+    console.log(`id=${id}`)
+    setTriviaCategory(id)
+  }
+
   return (
     <div className='quiz'>
+      <CategoryMenu
+        categories={triviaCategories}
+        selectCategory={selectCategory}
+      />
       <div>
         {questionsAndAnswers.length > 0 &&
           questionsAndAnswers.map((qAndA) => (
