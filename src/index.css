@@ -35,7 +35,7 @@ main {
 }
 .title {
   margin: 0;
-  font-family: 'Karla';
+  font-family: "Karla";
   font-style: normal;
   font-weight: 700;
   font-size: 31.25px;
@@ -46,7 +46,7 @@ main {
 }
 .descr {
   margin-top: 7px;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -59,7 +59,7 @@ main {
   margin-top: 30px;
   width: 193px;
   height: 52px;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 500;
   font-size: 19px;
@@ -94,7 +94,7 @@ main {
   right: 0%;
   top: 0%;
   bottom: 0%;
-  background-image: url('/src/images/top-right.png');
+  background-image: url("/src/images/top-right.png");
   border-top-right-radius: 10px;
   /* border: 2px solid green; */
 }
@@ -120,7 +120,7 @@ main {
   right: 0%;
   top: 0%;
   bottom: 0%;
-  background-image: url('/src/images/bot-left.png');
+  background-image: url("/src/images/bot-left.png");
   border-top-right-radius: 40px;
   border-bottom-left-radius: 10px;
   /* border: 2px solid orange; */
@@ -139,9 +139,29 @@ main {
   justify-content: flex-start;
   /* border: 2px solid red; */
 }
+.quiz-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.current-category {
+  margin-top: 10px;
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  color: #293264;
+}
+.current-difficulty {
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  color: #293264;
+}
 .question {
   margin-top: 18px;
-  font-family: 'Karla';
+  font-family: "Karla";
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -151,7 +171,7 @@ main {
 .answers {
   margin-top: 5px;
   width: 100%;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   text-align: center;
   color: #293264;
@@ -184,7 +204,7 @@ main {
   margin-top: 10px;
   width: 130px;
   height: 35px;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -202,7 +222,7 @@ main {
   justify-content: space-around;
 }
 .answer-score {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-size: 12.8px;
