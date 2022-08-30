@@ -1,55 +1,67 @@
-import { convert } from 'html-to-text'
+import { convert } from "html-to-text";
 
 export default function QuestionAndAnswer(props) {
-  const { quizData, checkAnswers } = props
+  const { quizData, checkAnswers } = props;
 
   function Answers(props) {
-    const { answers } = props
+    const { answers } = props;
     return (
-      <div className='answers'>
+      <div className="answers">
         {answers.map((answer) => (
           <Answer key={answer.id} answer={answer} />
         ))}
       </div>
-    )
+    );
   }
   function Answer(props) {
-    const { answer } = props
+    const { answer } = props;
 
-    const selectedAnswerColor = '#D6DBF5'
-    const unselectedAnswerColor = 'white'
-    const correctAnswerColor = '#94D7A2'
-    const wrongtAnswerColor = '#F8BCBC'
+    const selectedAnswerColor = "#D6DBF5";
+    const unselectedAnswerColor = "white";
+    const correctAnswerColor = "#94D7A2";
+    const wrongtAnswerColor = "#F8BCBC";
 
-    let bgColor = unselectedAnswerColor
+    let bgColor = unselectedAnswerColor;
     if (checkAnswers) {
       if (answer.isAnswer) {
-        bgColor = correctAnswerColor
+        bgColor = correctAnswerColor;
       } else if (answer.isSelected) {
-        bgColor = wrongtAnswerColor
+        bgColor = wrongtAnswerColor;
       }
     } else {
-      bgColor = answer.isSelected ? selectedAnswerColor : unselectedAnswerColor
+      bgColor = answer.isSelected ? selectedAnswerColor : unselectedAnswerColor;
     }
-    const styles = {
-      backgroundColor: bgColor,
-    }
+    const styles = checkAnswers
+      ? {
+          backgroundColor: bgColor,
+          cursor: "auto",
+        }
+      : { backgroundColor: bgColor, cursor: "pointer" };
 
-    return (
+    return checkAnswers ? (
       <button
-        className='answer'
+        className="answer"
+        style={styles}
+        onClick={() => answer.selectAnswer(answer.id)}
+        disabled
+      >
+        {convert(answer.answer)}
+      </button>
+    ) : (
+      <button
+        className="answer"
         style={styles}
         onClick={() => answer.selectAnswer(answer.id)}
       >
         {convert(answer.answer)}
       </button>
-    )
+    );
   }
   return (
     <div>
-      <div className='question'>{convert(quizData.question)}</div>
+      <div className="question">{convert(quizData.question)}</div>
       <Answers answers={quizData.answers} />
-      <div className='line'></div>
+      <div className="line"></div>
     </div>
-  )
+  );
 }
