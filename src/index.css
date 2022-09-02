@@ -9,28 +9,28 @@ body {
 
 main {
   position: relative;
-  width: 600px;
-  height: 600px;
-  left: 20px;
-  top: 30px;
+  width: 98vw;
+  height: 94vh;
+  left: 1vw;
+  top: 3vh;
   background: #f5f7fb;
   border-radius: 10px;
-  /* display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column; */
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
+  /* border: 2px solid greenyellow; */
 }
 
 /* intro page */
 .intro {
-  position: absolute;
-  top: 33%;
-  left: 30%;
-  margin: 0;
+  /* position: absolute; */
+  /* top: 33%; */
+  /* left: 33%; */
+  /* margin-bottom: 50px; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   /* border: 2px solid peru; */
 }
 .title {
@@ -38,7 +38,7 @@ main {
   font-family: "Karla";
   font-style: normal;
   font-weight: 700;
-  font-size: 31.25px;
+  font-size: 32px;
   line-height: 37px;
   text-align: center;
   color: #293264;
@@ -133,10 +133,13 @@ main {
   top: 3.5%;
   width: 80%;
   height: 90%;
+  font-family: "Karla";
+  font-style: normal;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  overflow: scroll;
   /* border: 2px solid red; */
 }
 .quiz-header {
@@ -146,8 +149,7 @@ main {
 }
 .current-category {
   /* margin-top: 10px; */
-  font-family: "Karla";
-  font-style: normal;
+  font-family: inherit;
   font-weight: 300;
   font-size: 15px;
   text-align: center;
@@ -157,8 +159,7 @@ main {
 }
 .current-difficulty {
   margin-top: 10px;
-  font-family: "Karla";
-  font-style: normal;
+  font-family: inherit;
   font-weight: 300;
   font-size: 15px;
   text-align: center;
@@ -168,8 +169,7 @@ main {
 }
 .question {
   margin-top: 18px;
-  font-family: "Karla";
-  font-style: normal;
+  /* font-family: "Karla"; */
   font-weight: 700;
   font-size: 15px;
   /* line-height: 19px; */
@@ -178,8 +178,6 @@ main {
 .answers {
   margin-top: 5px;
   width: 100%;
-  font-family: "Inter";
-  font-style: normal;
   text-align: center;
   color: #293264;
   display: flex;
@@ -209,10 +207,11 @@ main {
 /* quiz buttons */
 .quiz-btn {
   margin-top: 20px;
+  margin-bottom: 20px;
   width: 130px;
   /* height: 35px; */
-  font-family: "Inter";
-  font-style: normal;
+  font-family: inherit;
+  /* font-style: normal; */
   font-weight: 700;
   font-size: 15px;
   /* line-height: 12px; */
@@ -229,8 +228,8 @@ main {
   justify-content: space-around;
 }
 .answer-score {
-  font-family: "Inter";
-  font-style: normal;
+  /* font-family: "Inter"; */
+  /* font-style: normal; */
   font-weight: 700;
   font-size: 12.8px;
   line-height: 15px;
