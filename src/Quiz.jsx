@@ -1,7 +1,7 @@
 import React from "react";
 import QuestionAndAnswer from "./QuestionAndAnswer";
-import ItemsMenu from "./ItemsMenu";
 import { nanoid } from "nanoid";
+import Confetti from "react-confetti";
 
 export default function Questions(props) {
   const triviaDifficulties = [
@@ -151,19 +151,6 @@ export default function Questions(props) {
   function selectAnswer(id) {
     setSelectedAnswer(id);
   }
-  function findAnswer(id) {
-    let theAnswer = {};
-    questionsAndAnswers.forEach((qAndA) => {
-      qAndA.answers.forEach((answer) => {
-        console.log(`answer.id=${answer.id}  id=${id}`);
-        if (answer.id === id) {
-          theAnswer = answer;
-        }
-      });
-    });
-    console.log(`theAnswer.id=${theAnswer.id}`);
-    return theAnswer;
-  }
 
   function getTheAnswers() {
     setCheckAnswers(true);
@@ -175,46 +162,53 @@ export default function Questions(props) {
     setReplay(true);
   }
 
-  function selectCategory(id) {
-    setTriviaCategory(id);
-  }
-
-  function selectDifficulty(difficulty) {
-    setTriviaDifficulty(difficulty);
-  }
-
-  function getItemName(id, items) {
-    let itemName = "";
-    for (let i = 0; i < items.length; i++) {
-      const item = items[i];
-      if (item.id === id) {
-        itemName = item.name;
-        break;
-      }
+  function handleChange(event) {
+    const { name, value } = event.target;
+    console.log(`name=${name}  value=${value}`);
+    if (name === "categories") {
+      setTriviaCategory(value);
+    } else if (name === "difficulties") {
+      setTriviaDifficulty(value);
     }
-    return itemName;
   }
+  function generateCategoriesMenu() {
+    return triviaCategories.map((category) => (
+      <option key={category.key} value={category.id}>
+        {category.name}
+      </option>
+    ));
+  }
+  function generateDifficultiesMenu() {
+    return triviaDifficulties.map((difficulty) => (
+      <option key={difficulty.key} value={difficulty.id}>
+        {difficulty.name}
+      </option>
+    ));
+  }
+
   return (
     <div className="quiz">
-      <div className="quiz-header">
-        <ItemsMenu
-          title="Categories"
-          items={triviaCategories}
-          selectItem={selectCategory}
-        />
-        <ItemsMenu
-          title="Difficulties"
-          items={triviaDifficulties}
-          selectItem={selectDifficulty}
-        />{" "}
+      {correctAnswers === 5 && <Confetti />}
+      <div>
+        <select
+          className="current-category"
+          name="categories"
+          value={triviaCategory}
+          onChange={handleChange}
+        >
+          {generateCategoriesMenu()}
+        </select>
       </div>
-      <h3 className="current-category">
-        Category: {getItemName(triviaCategory, triviaCategories)}
-      </h3>
-      <h4 className="current-difficulty">
-        Difficulty: {getItemName(triviaDifficulty, triviaDifficulties)}
-      </h4>
-
+      <div>
+        <select
+          className="current-difficulty"
+          name="difficulties"
+          value={triviaDifficulty}
+          onChange={handleChange}
+        >
+          {generateDifficultiesMenu()}
+        </select>
+      </div>
       <div>
         {questionsAndAnswers.length > 0 &&
           questionsAndAnswers.map((qAndA) => (

@@ -9,8 +9,8 @@ body {
 
 main {
   position: relative;
-  width: 700px;
-  height: 800px;
+  width: 600px;
+  height: 600px;
   left: 20px;
   top: 30px;
   background: #f5f7fb;
@@ -145,26 +145,33 @@ main {
   justify-content: space-around;
 }
 .current-category {
-  margin-top: 10px;
-  font-family: "Karla";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  color: #293264;
-}
-.current-difficulty {
+  /* margin-top: 10px; */
   font-family: "Karla";
   font-style: normal;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 15px;
+  text-align: center;
+  background: #f5f7fb;
   color: #293264;
+  border-radius: 7.71045px;
+}
+.current-difficulty {
+  margin-top: 10px;
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  text-align: center;
+  background: #f5f7fb;
+  color: #293264;
+  border-radius: 7.71045px;
 }
 .question {
   margin-top: 18px;
   font-family: "Karla";
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 15px;
   /* line-height: 19px; */
   color: #293264;
 }
@@ -201,13 +208,13 @@ main {
 
 /* quiz buttons */
 .quiz-btn {
-  margin-top: 10px;
+  margin-top: 20px;
   width: 130px;
-  height: 35px;
+  /* height: 35px; */
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 15px;
   /* line-height: 12px; */
   text-align: center;
   color: #f5f7fb;
